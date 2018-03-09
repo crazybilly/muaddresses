@@ -1,4 +1,5 @@
 # validate addresses using usps
+# this was the original function. No longer used or exported
 
 validate_address_usps <- function(street, city, state, username) {
 

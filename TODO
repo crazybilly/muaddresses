@@ -10,8 +10,8 @@ TODO
   - usps validate
     - way to handle parsing errors from usps
     - simplify needs to put dash in zip+4
-  - rename the package
-    - how hard is this (try a git branch)
-    - move the github repo?
-  - rewrite README.rmd
-  - export %>%
+  x rename the package
+    x how hard is this (try a git branch)
+    x move the github repo?
+  x rewrite README.rmd
+  x export %>%

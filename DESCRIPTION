@@ -1,17 +1,19 @@
-Package: rusps
+Package: muaddresses
 Type: Package
-Title: Validates US addresses using the USPS api
+Title: MU Addresses
 Version: 0.2.1
-Authors@R: person("Hans", "Thompson", email = "hans.thompson1@gmail.com", role = c("aut", "cre"))
-Description: Takes in the api username, street, city, and zip and returns a standardized address. Good for comparring addresses between datasets. 
+Author: Jake Tolbert
+Maintainer: Jake Tolbert <jtolbert@millikin.edu>
+Description: A set of tools in R for standardizing and comparing mailing addresses, built for Millikin University's Alumni & Development Office.
 License: GPL3
 LazyData: TRUE
 Imports: 
-	XML
+	  XML
 	, xml2
 	, dplyr
 	, tidyr
 	, purrr
 	, httr
 	, jsonlite
+	, magrittr
 RoxygenNote: 6.0.1
