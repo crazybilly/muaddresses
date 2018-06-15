@@ -5,15 +5,16 @@ Version: 0.2.1
 Author: Jake Tolbert
 Maintainer: Jake Tolbert <jtolbert@millikin.edu>
 Description: A set of tools in R for standardizing and comparing mailing addresses, built for Millikin University's Alumni & Development Office.
-License: GPL3
+License: GPL-3
 LazyData: TRUE
 Imports: 
-	  XML
-	, xml2
+	  xml2
+	, XML
 	, dplyr
 	, tidyr
 	, purrr
 	, httr
 	, jsonlite
-	, magrittr
+Depends:
+	  magrittr
 RoxygenNote: 6.0.1

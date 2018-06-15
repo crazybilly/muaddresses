@@ -4,7 +4,7 @@
 \alias{start_libpostal_docker}
 \title{Start Libpostal Docker Instance}
 \usage{
-start_libpostal_docker(dockername = "amazing_curran")
+start_libpostal_docker(...)
 }
 \arguments{
 \item{dockername}{the name of a libpostal-rest docker instance}

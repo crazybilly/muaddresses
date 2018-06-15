@@ -4,10 +4,10 @@
 \alias{check_libpostal_docker}
 \title{Test If Libpostal Is Running}
 \usage{
-check_libpostal_docker(image = "libpostal")
+check_libpostal_docker(...)
 }
 \arguments{
-\item{imagename}{a regular expression to search for in the image name}
+\item{image}{a regular expression to search for in the image name}
 }
 \value{
 a logical value indicating whether libpostal is running or not

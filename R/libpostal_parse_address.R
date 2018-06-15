@@ -37,7 +37,7 @@ parse_address  <- function(serveraddress = '192.168.99.100:8080/parser', address
 
 
   results  <- prep_query(address) %>%
-    map_dfr(~
+    purrr::map_dfr(~
       httr::POST(serveraddress, body = .x ) %>%
       httr::content("text") %>%
       jsonlite::fromJSON() %>%
@@ -51,9 +51,9 @@ parse_address  <- function(serveraddress = '192.168.99.100:8080/parser', address
 
   if(collapsestreet) {
     streetfix  <- renamed %>%
-      mutate(addr1 = paste(house_number, road)) %>%
-      select(-house_number, -road) %>%
-      select(addr1, everything())
+      dplyr::mutate(addr1 = paste(house_number, road)) %>%
+      dplyr::select(-house_number, -road) %>%
+      dplyr::select(addr1, everything())
   } else {
     streetfix  <- renamed
   }

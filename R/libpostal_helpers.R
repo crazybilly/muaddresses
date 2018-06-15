@@ -21,19 +21,25 @@ prep_query  <- function(x) {
 #'
 #' @description test to see if libpostal-rest docker image is running on the current machine.
 #'
-#' @param imagename a regular expression to search for in the image name
+#' @param image a regular expression to search for in the image name
 #'
 #' @details currently Windows only
 #' @return a logical value indicating whether libpostal is running or not
 #'
 #' @export
 #'
-check_libpostal_docker  <- function(image = "libpostal") {
+check_libpostal_docker  <- purrr::quietly(function(image = "libpostal") {
 
-  dockerlist  <- shell("docker-machine env --shell=powershell | Invoke-Expression; docker container ls", shell = 'powershell', intern = T)
+  check_docker  <- purrr::possibly(
+      shell("docker-machine env --shell=powershell | Invoke-Expression; docker container ls", shell = 'powershell', intern = T)
+    , otherwise = ""
+  )
+
+  dockerlist  <- check_docker()
+
   any(grepl(image, dockerlist))
 
-}
+})
 
 
 
@@ -43,13 +49,19 @@ check_libpostal_docker  <- function(image = "libpostal") {
 #'
 #' @param dockername the name of a libpostal-rest docker instance
 #'
-#' @return
 #' @export
 #'
-start_libpostal_docker  <- function(dockername = 'amazing_curran') {
+start_libpostal_docker  <- purrr::safely(function(dockername = 'amazing_curran') {
+
+  startscriptpath  <- paste0(system.file(package = 'muaddresses'), "/start-docker.ps1")
+
+  purrr::possibly(
+      shell("docker-machine env --shell=powershell | Invoke-Expression; docker container ls", shell = 'powershell')
+    , otherwise = shell(cmd = startscriptpath, shell = 'powershell')
+  )
+
 
   command  <- paste("docker-machine env --shell=powershell | Invoke-Expression; docker start", dockername)
-
   shell(command, shell = 'powershell')
 
-}
+})
